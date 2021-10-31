@@ -19,7 +19,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/roboto_black"
-            android:text="Recetorium"
+            android:text="Ensaladas"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto"
-                        android:text="Ensaladas"
+                        android:text="Ensalada mixta"
                         android:textAlignment="center"
                         android:textSize="20sp" />
 
@@ -62,7 +62,7 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/salad" />
+                        app:srcCompat="@drawable/salad_mix" />
 
                 </LinearLayout>
 
@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto"
-                        android:text="Sopas"
+                        android:text="Ensalada Cesar"
                         android:textAlignment="center"
                         android:textSize="20sp" />
 
@@ -88,7 +88,7 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/soup" />
+                        app:srcCompat="@drawable/caesar_salad" />
 
                 </LinearLayout>
 
@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto"
-                        android:text="Mar"
+                        android:text="Ensalada Griega"
                         android:textAlignment="center"
                         android:textSize="20sp" />
 
@@ -114,7 +114,7 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/shrimp" />
+                        app:srcCompat="@drawable/greek_salad" />
 
                 </LinearLayout>
 
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto"
-                        android:text="Pasta"
+                        android:text="Capresa"
                         android:textAlignment="center"
                         android:textSize="20sp" />
 
@@ -140,7 +140,7 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/pasta" />
+                        app:srcCompat="@drawable/capresse_salad" />
 
                 </LinearLayout>
 
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto"
-                        android:text="Recetas propias"
+                        android:text="Panzanella"
                         android:textAlignment="center"
                         android:textSize="20sp" />
 
@@ -166,7 +166,7 @@
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/recipe_book" />
+                        app:srcCompat="@drawable/panzanella_salad" />
 
                 </LinearLayout>
 
