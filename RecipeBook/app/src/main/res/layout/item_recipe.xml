@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -9,7 +10,7 @@
 
     <TextView
         android:id="@+id/tv_recipeTitle"
-        android:layout_width="80dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/roboto"
@@ -19,8 +20,20 @@
 
     <ImageView
         android:id="@+id/iv_recipe"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="100dp"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ImageButton
+        android:id="@+id/ib_deleteRecipe"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="delete button"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/icon_minus"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 </LinearLayout>
