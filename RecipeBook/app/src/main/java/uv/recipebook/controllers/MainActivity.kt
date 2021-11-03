@@ -1,9 +1,10 @@
-package uv.recipebook
+package uv.recipebook.controllers
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import uv.recipebook.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         val btn_salad = findViewById<LinearLayout>(R.id.llayout_salad)
         btn_salad.setOnClickListener {
-            val intent = Intent(this,SaladMenu::class.java)
+            val intent = Intent(this, SaladMenu::class.java)
             startActivity(intent)
         }
         val btn_custom = findViewById<LinearLayout>(R.id.llayout_customRecipe)

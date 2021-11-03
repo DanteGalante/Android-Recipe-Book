@@ -1,16 +1,19 @@
-package uv.recipebook
+package uv.recipebook.controllers
 
+import android.content.Intent
 import android.database.SQLException
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import uv.recipebook.*
+import uv.recipebook.data.DBAdmin
+import uv.recipebook.data.Ingredient
+import uv.recipebook.data.Recipe
 
 class CRUD_RecipesMenu : AppCompatActivity() {
     lateinit var mRecyclerView: RecyclerView
@@ -21,6 +24,12 @@ class CRUD_RecipesMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_recipes_menu)
         setUpRecyclerView()
+
+        val addRecipe = findViewById<FloatingActionButton>(R.id.fab_addRecipe)
+        addRecipe.setOnClickListener {
+            val intent = Intent(this, CreateRecipeMenu::class.java)
+            startActivity(intent)
+        }
     }
 
     fun setUpRecyclerView() {
@@ -40,11 +49,13 @@ class CRUD_RecipesMenu : AppCompatActivity() {
             val row = bd.rawQuery("SELECT imagen, titulo, descripcion, ingredientes FROM recetas",null)
             if (row.moveToFirst()) {
                 do {
-                    recipes.add(Recipe(
+                    recipes.add(
+                        Recipe(
                         getImage(row.getBlob(0)),
                         row.getString(1),
                         row.getString(2),
-                        getIngredients(row.getString(3))))
+                        getIngredients(row.getString(3)))
+                    )
                 } while (row.moveToNext())
             } else {
                 alert.text = "No hay recetas personales,¡Crea una!"
