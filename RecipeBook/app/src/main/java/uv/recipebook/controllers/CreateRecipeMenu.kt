@@ -59,6 +59,7 @@ class CreateRecipeMenu : AppCompatActivity() {
                 if (amount.text.isNotEmpty()) {
                     //ingredientsList.add(Ingredient(ingredientName.text.toString(),amount.text.toString().toInt()))
                     adapter.addIngrediente(Ingredient(ingredientName.text.toString(),amount.text.toString().toInt()))
+                    adapter.notifyDataSetChanged()
                     ingredientName.setText("")
                     amount.setText("")
                 } else {
@@ -71,18 +72,24 @@ class CreateRecipeMenu : AppCompatActivity() {
 
         saveRecipe.setOnClickListener {
             if (validIntroducedText()) {
-                var recipe = Recipe(getImage(),title.text.toString(),description.text.toString(),adapter.ingredientList)
+                var recipe = Recipe(
+                    0,
+                    getImage(),
+                    title.text.toString(),
+                    description.text.toString(),
+                    adapter.ingredientList
+                )
                 try {
-                    val admin = DBAdmin(this, "administracion", null, 1)
+                    val admin = DBAdmin(this, "recetorium", null, 1)
                     val bd = admin.writableDatabase
                     val register = ContentValues()
-                    //register.put("id", 0)
+                    //register.put("id", null)
                     register.put("imagen", bitmapToArray(recipe.image))
                     register.put("titulo",recipe.title)
                     register.put("descripcion",recipe.description)
                     register.put("ingredientes",getIngredients())
 
-                    bd.insert("recetas",null,register)
+                    println(bd.insert("recetas",null,register))
                     bd.close()
 
                     image.setImageBitmap(null)
@@ -105,9 +112,6 @@ class CreateRecipeMenu : AppCompatActivity() {
         for (item in adapter.ingredientList) {
             ingredients += "${item.ingredient},${item.amountInGr};"
         }
-        println()
-        println(ingredients)
-        println()
         return ingredients;
     }
 
