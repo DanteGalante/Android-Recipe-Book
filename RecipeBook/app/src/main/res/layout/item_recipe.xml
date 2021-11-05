@@ -25,15 +25,38 @@
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_launcher_background" />
 
-    <ImageButton
-        android:id="@+id/ib_deleteRecipe"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="delete button"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/icon_minus"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/ib_deleteRecipe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="delete button"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toBottomOf="@id/ib_editRecipe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/icon_minus"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/ib_editRecipe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="edit button"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@id/ib_deleteRecipe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_edit"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

@@ -2,11 +2,13 @@ package uv.recipebook.controllers
 
 import android.content.Intent
 import android.database.SQLException
+import android.database.sqlite.SQLiteException
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -19,10 +21,19 @@ class CRUD_RecipesMenu : AppCompatActivity() {
     lateinit var mRecyclerView: RecyclerView
     val mAdapter: RecyclerAdapter = RecyclerAdapter()
     lateinit var alert: TextView
+    lateinit var dbAdmin : DBAdmin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud_recipes_menu)
+        alert = findViewById(R.id.tv_alert)
+
+        try {
+            dbAdmin = DBAdmin (this, "recetorium", null, 1)
+        } catch (sqlException: SQLException) {
+            sqlException.printStackTrace()
+            alert.text = "Error al hacer conexion con la base de datos, favor de intentarlo más tarde"
+        }
         setUpRecyclerView()
 
         val addRecipe = findViewById<FloatingActionButton>(R.id.fab_addRecipe)
@@ -30,40 +41,52 @@ class CRUD_RecipesMenu : AppCompatActivity() {
             val intent = Intent(this, CreateRecipeMenu::class.java)
             startActivity(intent)
         }
+
+        val refreshRecipe = findViewById<FloatingActionButton>(R.id.fab_refresh)
+        refreshRecipe.setOnClickListener {
+            setUpRecyclerView()
+        }
     }
 
     fun setUpRecyclerView() {
-        alert = findViewById<TextView>(R.id.tv_alert)
-        mRecyclerView = findViewById<RecyclerView>(R.id.rv_recipes)
+        mRecyclerView = findViewById(R.id.rv_recipes)
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mAdapter.RecyclerAdapter(getRecipes(),this)
+        mAdapter.RecyclerAdapter(getRecipes(),this, dbAdmin)
         mRecyclerView.adapter = mAdapter
     }
 
     fun getRecipes() : MutableList<Recipe> {
         var recipes: MutableList<Recipe> = ArrayList()
         try {
-            val admin = DBAdmin (this, "administracion", null, 1)
-            val bd = admin.writableDatabase
-            val row = bd.rawQuery("SELECT imagen, titulo, descripcion, ingredientes FROM recetas",null)
+            val bd = dbAdmin.writableDatabase
+            val row = bd.rawQuery("SELECT id, imagen, titulo, descripcion, ingredientes " +
+                                      "FROM recetas",null)
             if (row.moveToFirst()) {
                 do {
                     recipes.add(
                         Recipe(
-                        getImage(row.getBlob(0)),
-                        row.getString(1),
+                        row.getInt(0),
+                        getImage(row.getBlob(1)),
                         row.getString(2),
-                        getIngredients(row.getString(3)))
+                        row.getString(3),
+                        getIngredients(row.getString(4)))
                     )
                 } while (row.moveToNext())
             } else {
                 alert.text = "No hay recetas personales,¡Crea una!"
             }
+
             bd.close()
-        } catch (sqlException: SQLException) {
+        } catch (sqlException: SQLiteException) {
             sqlException.printStackTrace()
-            alert.text = "Error al hacer conexion con la base de datos, favor de intentarlo más tarde"
+
+            Toast.makeText(
+                this,
+                "Error al tratar de obtener las recetas de la base de datos," +
+                     " favor de intentarlo más tarde",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         return recipes
@@ -78,13 +101,15 @@ class CRUD_RecipesMenu : AppCompatActivity() {
         for (i in ingredients.indices ) {
             when {
                 //, Represents the end of the ingredient's name
-                ingredients[i].equals(",") -> {
+                ingredients[i].equals(',') -> {
                     switcher = 1
                 }
                 //; Represents the end of the description of an ingredient
-                ingredients[i].equals(";") -> {
+                ingredients[i].equals(';') -> {
                     switcher = 0
                     ingredientsList.add(Ingredient(ingredientName,amount.toInt()))
+                    ingredientName = ""
+                    amount = ""
                     ingredientIterator++
                 }
                 else -> {
