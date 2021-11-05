@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecipeBook">
         <activity
+            android:name=".controllers.RecipeDisplayMenu"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.EditRecipeMenu"
+            android:exported="false" />
+        <activity
             android:name=".controllers.CreateRecipeMenu"
             android:exported="false" />
         <activity
