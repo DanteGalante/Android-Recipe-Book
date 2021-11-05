@@ -7,14 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import uv.recipebook.controllers.CreateRecipeMenu
 import uv.recipebook.controllers.EditRecipeMenu
+import uv.recipebook.controllers.RecipeDisplayMenu
 import uv.recipebook.data.DBAdmin
 import uv.recipebook.data.Recipe
 
@@ -41,10 +39,11 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
-        val item = recipes.get(position)
+        val item = recipes[position]
         holder.bind(item, context)
         holder.delete(recipes[position], position, context, this, dbAdmin)
         holder.goToEdit(recipes[position], context)
+        holder.goToDisplayMenu(recipes[position], context)
     }
 
     override fun getItemCount(): Int {
@@ -56,6 +55,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         val image = view.findViewById<ImageView>(R.id.iv_recipe)
         val btn_delete = view.findViewById<ImageButton>(R.id.ib_deleteRecipe)
         val btn_edit = view.findViewById<ImageButton>(R.id.ib_editRecipe)
+        val recipeDisplay = view.findViewById<LinearLayout>(R.id.llayout_customRecipeCRUD)
 
         fun bind(recipe: Recipe, context: Context) {
             recipeTitle.text = recipe.title
@@ -105,13 +105,18 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             }
         }
 
-        fun goToEdit(
-            recipe: Recipe,
-            context: Context,
-        ) {
+        fun goToEdit(recipe: Recipe, context: Context) {
             btn_edit.setOnClickListener {
                 val intent = Intent(context, EditRecipeMenu::class.java)
                 intent.putExtra("recipe_edit_id",recipe.id)
+                startActivity(context, intent, null)
+            }
+        }
+
+        fun goToDisplayMenu(recipe: Recipe, context: Context) {
+            recipeDisplay.setOnClickListener {
+                val intent = Intent(context, RecipeDisplayMenu::class.java)
+                intent.putExtra("recipe_display_id", recipe.id)
                 startActivity(context, intent, null)
             }
         }
