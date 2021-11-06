@@ -1,2 +1,2 @@
-# Android-Recipe-Book
+# Recetorium
 Recipe book coded in Kotlin
