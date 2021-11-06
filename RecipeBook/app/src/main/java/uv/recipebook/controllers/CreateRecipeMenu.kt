@@ -58,7 +58,7 @@ class CreateRecipeMenu : AppCompatActivity() {
             if (ingredientName.text.isNotEmpty()) {
                 if (amount.text.isNotEmpty()) {
                     //ingredientsList.add(Ingredient(ingredientName.text.toString(),amount.text.toString().toInt()))
-                    adapter.addIngrediente(Ingredient(ingredientName.text.toString(),amount.text.toString().toInt()))
+                    adapter.addIngrediente(Ingredient(ingredientName.text.toString(),amount.text.toString().toDouble()))
                     adapter.notifyDataSetChanged()
                     ingredientName.setText("")
                     amount.setText("")
@@ -95,7 +95,7 @@ class CreateRecipeMenu : AppCompatActivity() {
                     image.setImageBitmap(null)
                     title.setText("")
                     description.setText("")
-                    recyclerView.recycledViewPool.clear()
+                    adapter.ingredientList.clear()
 
                     Toast.makeText(this, "La receta se ha registrado con éxito", Toast.LENGTH_SHORT).show()
                 } catch (sqlException: SQLException) {
