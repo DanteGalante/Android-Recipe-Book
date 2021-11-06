@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_crud_recipes_menu.xml" value="0.33" />
+        <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_create_recipe_menu.xml" value="0.25" />
+        <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_crud_recipes_menu.xml" value="0.24486571879936808" />
+        <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_edit_recipe_menu.xml" value="0.33" />
         <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_main_menu.xml" value="0.22" />
+        <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_recipe_display_menu.xml" value="0.25" />
         <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/activity_salad_menu.xml" value="0.25" />
+        <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/item_ingredient.xml" value="0.25" />
+        <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/item_recipe.xml" value="1.0" />
         <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/#30 Recetario Android App/Android-Recipe-Book/RecipeBook/app/src/main/res/layout/recycler_item_row.xml" value="0.33" />
         <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/RecipeBook/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/00. DOCUMENTO/ESCUELA/7o semestre/Desarrollo de aplicaciones/RecipeBook/app/src/main/res/layout/content_main.xml" value="0.22512562814070353" />
