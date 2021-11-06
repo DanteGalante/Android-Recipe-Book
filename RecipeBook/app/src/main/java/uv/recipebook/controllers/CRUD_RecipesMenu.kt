@@ -107,7 +107,7 @@ class CRUD_RecipesMenu : AppCompatActivity() {
                 //; Represents the end of the description of an ingredient
                 ingredients[i].equals(';') -> {
                     switcher = 0
-                    ingredientsList.add(Ingredient(ingredientName,amount.toInt()))
+                    ingredientsList.add(Ingredient(ingredientName,amount.toDouble()))
                     ingredientName = ""
                     amount = ""
                     ingredientIterator++

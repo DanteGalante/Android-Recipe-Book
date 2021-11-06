@@ -75,9 +75,9 @@ class RecyclerAdapter_Ingredient : RecyclerView.Adapter<RecyclerAdapter_Ingredie
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     if(s!!.isBlank()) {
-                        adapter.ingredientList[adapterPosition].amountInGr = 0
+                        adapter.ingredientList[adapterPosition].amountInGr = 0.0
                     } else {
-                        adapter.ingredientList[adapterPosition].amountInGr = s.toString().toInt()
+                        adapter.ingredientList[adapterPosition].amountInGr = s.toString().toDouble()
                     }
 
                     println("id = $adapterPosition")

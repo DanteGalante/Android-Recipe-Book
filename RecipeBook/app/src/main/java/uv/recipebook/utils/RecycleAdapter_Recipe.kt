@@ -116,6 +116,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         fun goToDisplayMenu(recipe: Recipe, context: Context) {
             recipeDisplay.setOnClickListener {
                 val intent = Intent(context, RecipeDisplayMenu::class.java)
+                intent.putExtra("option", 0)
                 intent.putExtra("recipe_display_id", recipe.id)
                 startActivity(context, intent, null)
             }

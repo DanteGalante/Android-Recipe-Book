@@ -75,7 +75,7 @@ class EditRecipeMenu : AppCompatActivity() {
                     adapter.addIngrediente(
                         Ingredient(
                             et_ingredientName.text.toString(),
-                            et_ingAmountGr.text.toString().toInt()
+                            et_ingAmountGr.text.toString().toDouble()
                         )
                     )
                     adapter.notifyDataSetChanged()
@@ -233,7 +233,7 @@ class EditRecipeMenu : AppCompatActivity() {
                 //; Represents the end of the description of an ingredient
                 ingredients[i].equals(';') -> {
                     switcher = 0
-                    ingredientsList.add(Ingredient(ingredientName,amount.toInt()))
+                    ingredientsList.add(Ingredient(ingredientName,amount.toDouble()))
                     ingredientName = ""
                     amount = ""
                     ingredientIterator++
